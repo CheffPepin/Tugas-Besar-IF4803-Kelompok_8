@@ -2,12 +2,14 @@
 #define FILM_H_INCLUDED
 #include <iostream>
 #include "string"
+#include "artis.h"
 using namespace std;
 
 typedef struct elmFilm *adrFilm;
 
 struct film{
     string nama;
+    int tahun;
     float rating;
 };
 
