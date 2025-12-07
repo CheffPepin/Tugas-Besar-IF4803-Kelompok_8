@@ -44,7 +44,7 @@ void deleteAfterChild(adrFilm q, adrArtis p, adrArtis prec){
     }
 }
 
-adrArtis findElemenChild(listArtis L, adrFilm p, string nama){
+adrArtis findElemenChild(adrFilm p, string nama){
     adrArtis q = p ->cast;
     while(q ->info.nama != nama && q != nullptr){
         q = q ->next;
@@ -67,3 +67,4 @@ void viewChild(listFilm L1, listArtis L2){
         p = p ->next;
     }
 }
+
