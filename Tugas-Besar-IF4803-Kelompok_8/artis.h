@@ -17,12 +17,5 @@ struct elmArtis{
     adrArtis next;
 };
 
-struct listArtis{
-    adrArtis first;
-};
-
-
-
-
-
 #endif // ARTIS_H_INCLUDED
+
