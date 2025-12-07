@@ -7,6 +7,7 @@ void deleteFirstChild(adrFilm q, adrArtis p){
     if(q ->cast == nullptr){
      p = nullptr;
     } else if(q ->cast ->next == nullptr){
+        p = q ->cast;
         q ->cast == nullptr;
     } else {
         p = q ->cast;
@@ -27,7 +28,7 @@ void deleteLastChild(adrFilm q, adrArtis p){
             x = x ->next;
         }
         p = x ->next;
-        x ->next = nullptr;
+        x ->next  = nullptr;
 
     }
 }
@@ -35,10 +36,6 @@ void deleteLastChild(adrFilm q, adrArtis p){
 void deleteAfterChild(adrFilm q, adrArtis p, adrArtis prec){
     if(q ->cast == nullptr || prec ->next == nullptr){
         p = nullptr;
-    }else if(prec ->next ->next == nullptr) {
-        p = prec ->next;
-        p ->next = nullptr;
-
     }else{
         p = prec ->next;
         prec ->next = p ->next;
