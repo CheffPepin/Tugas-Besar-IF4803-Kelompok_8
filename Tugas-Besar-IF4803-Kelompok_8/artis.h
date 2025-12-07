@@ -8,6 +8,7 @@ typedef struct elmArtis *adrArtis;
 
 struct artis{
     string nama;
+    int umur;
     float rating;
 };
 
