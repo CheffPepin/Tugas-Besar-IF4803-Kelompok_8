@@ -3,45 +3,45 @@
 #include "string"
 using namespace std;
 
-void deleteFirstChild(listArtis L, adrArtis p){
-    if(L.first == nullptr){
+void deleteFirstChild(adrFilm q, adrArtis p){
+    if(q ->cast == nullptr){
      p = nullptr;
-    } else if(L.first ->next == nullptr){
-        L.first == nullptr;
+    } else if(q ->cast ->next == nullptr){
+        q ->cast == nullptr;
     } else {
-        p = L.first;
-        L.first = L.first ->next;
+        p = q ->cast;
+        q ->cast = q ->cast ->next;
         p ->next = nullptr;
     }
 
 }
 
-void deleteLastChild(listArtis L, adrArtis p){
-    adrArtis q = L.first;
-    if(L.first== nullptr){
+void deleteLastChild(adrFilm q, adrArtis p){
+    adrArtis x =  q ->cast;
+    if(x== nullptr){
 
-    } else if(L.first ->next == nullptr){
-        L.first == nullptr;
+    } else if(x->next == nullptr){
+         x == nullptr;
     } else{
-        while(q ->next ->next != nullptr){
-            q = q ->next;
+        while(x ->next ->next != nullptr){
+            x = x ->next;
         }
-        p = q ->next;
-        q ->next = nullptr;
+        p = x ->next;
+        x ->next = nullptr;
 
     }
 }
 
-void deleteAfterChild(listArtis L, adrArtis p, adrArtis prev){
-    if(L.first == nullptr || prev ->next == nullptr){
+void deleteAfterChild(adrFilm q, adrArtis p, adrArtis prec){
+    if(q ->cast == nullptr || prec ->next == nullptr){
         p = nullptr;
-    }else if(prev ->next ->next == nullptr) {
-        p = prev ->next;
+    }else if(prec ->next ->next == nullptr) {
+        p = prec ->next;
         p ->next = nullptr;
 
     }else{
-        p = prev ->next;
-        prev ->next = p ->next;
+        p = prec ->next;
+        prec ->next = p ->next;
         p ->next = nullptr;
 
     }
