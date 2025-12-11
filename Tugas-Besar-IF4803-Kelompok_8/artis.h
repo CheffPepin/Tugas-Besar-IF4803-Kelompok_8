@@ -18,10 +18,11 @@ struct elmArtis{
 };
 
 struct listArtis{
-    adrArtis first
+    adrArtis first;
 }
 
 #endif // ARTIS_H_INCLUDED
+
 
 
 
