@@ -17,10 +17,11 @@ struct elmArtis{
     adrArtis next;
 };
 
-struct ListArtis{
+struct listArtis{
     adrArtis first
 }
 
 #endif // ARTIS_H_INCLUDED
+
 
 
