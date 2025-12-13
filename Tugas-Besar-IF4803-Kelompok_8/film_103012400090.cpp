@@ -1,13 +1,15 @@
 #include "film.h"
 #include <iostream>
 #include "string"
+#include "artis.h"
+
 using namespace std;
 void deleteFirstParent(listFilm &L, adrFilm p){
     if (L.first != nullptr){
         p = L.first;
         adrArtis q;
-        while (p->cast.first != nullptr){
-            deleteLastChild(p->cast, q);
+        while (p->cast != nullptr){
+            deleteFirstChild(p, q);
         }
         L.first = L.first->next;
         p->next = nullptr;
@@ -23,8 +25,8 @@ void deleteLastParent(listFilm &L, adrFilm p){
     } else {
         p = L.last;
         adrArtis q;
-        while (p->cast.first != nullptr){
-            deleteFirstChild(p->cast, q);
+        while (p->cast != nullptr){
+            deleteFirstChild(p, q);
         }
         L.last = p->prev;
         L.last->next = nullptr;
@@ -37,10 +39,10 @@ void deleteAfterParent(listFilm &L, adrFilm prec, adrFilm p){
         if (prec->next == L.last){
             deleteLastParent(L, p);
         } else {
-            p = pre->next;
+            p = prec->next;
             adrArtis q;
-            while (p->cast.first){
-                deleteFirstChild(p->cast, q)
+            while (p->cast){
+                deleteFirstChild(p, q);
             }
             prec->next = p->next;
             p->next->prev = prec;
@@ -55,10 +57,10 @@ adrFilm findElemenParent(listFilm L, string name){
     adrFilm p;
     if (L.first != nullptr){
         p = L.first;
-        while (p != nullptr && p->nama != name){
+        while (p != nullptr && p->info.nama != name){
             p = p->next;
         }
-        if (p->nama == name){
+        if (p->info.nama == name){
             return p;
         } else {
             return nullptr;
@@ -71,9 +73,9 @@ void viewParent(listFilm L){
     adrFilm p;
     p = L.first;
     while (p != nullptr){
-        cout << "Nama film : " << p.nama << endl;
-        cout << "Tahun film : " << p.tahun << endl;
-        cout << "Rating film : " << p.rating << endl;
+        cout << "Nama film : " << p->info.nama << endl;
+        cout << "Tahun film : " << p->info.tahun << endl;
+        cout << "Rating film : " << p->info.rating << endl;
         p = p->next;
     }
 }
