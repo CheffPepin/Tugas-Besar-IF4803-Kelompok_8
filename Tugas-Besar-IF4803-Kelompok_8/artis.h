@@ -25,10 +25,10 @@ void insertFirstChild(adrFilm &q, adrArtis p);
 void insertLastChild(adrFilm &q, adrArtis p);
 void insertAfterChild(adrFilm &q, adrArtis prec, adrArtis p);
 void deleteFirstChild(adrFilm &q, adrArtis p);
-void deleteLastChild(adrFilm &q, adrArtis p){;
+void deleteLastChild(adrFilm &q, adrArtis p);
 void deleteAfterChild(adrFilm &q, adrArtis p, adrArtis prec);
 adrArtis findElemenChild(adrFilm p, string nama);
-void viewChild(listFilm L1, listArtis L2);
+void viewChild(adrFilm p);
 
 #endif // ARTIS_H_INCLUDED
 
