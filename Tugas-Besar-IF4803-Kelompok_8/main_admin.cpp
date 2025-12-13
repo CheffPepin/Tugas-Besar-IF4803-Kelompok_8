@@ -1,15 +1,14 @@
 #include <iostream>
 #include "artis.h"
 #include "film.h"
-
+extern listFilm L;
 using namespace std;
-
 void menuAdmin(){
-    int x = -99
+    int x = -99;
     while (x != 0){
-        cout << "===\n";
-        cout << "Menu Admin";
-        cout << "===\n";
+        cout << "======================\n";
+        cout << "      Menu Admin";
+        cout << "----------------------\n";
         cout << "1. Insert First Film\n";
         cout << "2. Insert Last Film\n";
         cout << "3. Insert After Film\n";
@@ -18,7 +17,7 @@ void menuAdmin(){
         cout << "6. Delete After Film\n";
         cout << "7. Find Nama Film\n";
         cout << "8. View Film\n";
-        cout << "===\n";
+        cout << "----------------------\n";
         cout << "9. Insert First Aktor\n";
         cout << "10. Insert Last Aktor\n";
         cout << "11. Insert After Aktor\n";
@@ -28,9 +27,54 @@ void menuAdmin(){
         cout << "15. Find Nama Aktor\n";
         cout << "16. View Aktor\n";
         cout << "0. Kembali\n";
-        cout << "===\n";
+        cout << "======================\n";
         cout << "Pilih :";
         if (x == 1){
-
+            string nama;
+            int tahun;
+            float rating;
+            cout << "Nama Film : ";
+            cin >> nama;
+            cout << "Tahun Film : ";
+            cin >> tahun;
+            cout << "Rating Film : ";
+            cin >> rating;
+            elmFilm p = createElementParent(nama, tahun, rating);
+            insertFirstParent(L, p);
+            cout << "Film berhasil ditambahkan" << endl;
+        } else if (x == 2){
+            string nama;
+            int tahun;
+            float rating;
+            cout << "Nama Film : ";
+            cin >> nama;
+            cout << "Tahun Film : ";
+            cin >> tahun;
+            cout << "Rating Film : ";
+            cin >> rating;
+            elmFilm p = createElementParent(L, nama, tahun, rating);
+            insertLastParent(L, p);
+            cout << "Film berhasil ditambahkan" << endl;
+        } else if (x == 3){
+            string x;
+            cout << "Masukan film setelah : ";
+            cin >> x;
+            elmFilm prec = findElemenParent(L, x);
+            if (prec != nullptr){
+                string nama;
+                int tahun;
+                float rating;
+                cout << "Nama Film : ";
+                cin >> nama;
+                cout << "Tahun Film : ";
+                cin >> tahun;
+                cout << "Rating Film : ";
+                cin >> rating;
+                elmFilm p = createElementParent(L, nama, tahun, rating);
+                cout << "Rating Film : ";
+                cin >> rating;
+                insertAfterParent(L, p, prec);
+                cout << "Film berhasil ditambahkan" << endl;
+            }
         }
 }
