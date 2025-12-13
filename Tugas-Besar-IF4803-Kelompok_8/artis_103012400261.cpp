@@ -1,9 +1,10 @@
 #include "film.h"
 #include <iostream>
 #include "string"
+#include "artis.h"
 using namespace std;
 
-void deleteFirstChild(adrFilm q, adrArtis p){
+void deleteFirstChild(adrFilm &q, adrArtis p){
     if(q ->cast == nullptr){
      p = nullptr;
     } else if(q ->cast ->next == nullptr){
@@ -14,10 +15,11 @@ void deleteFirstChild(adrFilm q, adrArtis p){
         q ->cast = q ->cast ->next;
         p ->next = nullptr;
     }
-
 }
 
-void deleteLastChild(adrFilm q, adrArtis p){
+
+
+void deleteLastChild(adrFilm &q, adrArtis &p){
     adrArtis x =  q ->cast;
     if(x== nullptr){
 
@@ -33,7 +35,7 @@ void deleteLastChild(adrFilm q, adrArtis p){
     }
 }
 
-void deleteAfterChild(adrFilm q, adrArtis p, adrArtis prec){
+void deleteAfterChild(adrFilm &q, adrArtis p, adrArtis prec){
     if(q ->cast == nullptr || prec ->next == nullptr){
         p = nullptr;
     }else{
@@ -52,8 +54,7 @@ adrArtis findElemenChild(adrFilm p, string nama){
     return q;
 }
 
-void viewChild(listFilm L1, listArtis L2){
-    adrFilm p = L1.first;
+void viewChild(adrFilm p){
     adrArtis q = p ->cast;
 
     while(p != nullptr){
