@@ -19,7 +19,7 @@ void deleteFirstChild(adrFilm &q, adrArtis p){
 
 
 
-void deleteLastChild(adrFilm &q, adrArtis &p){
+void deleteLastChild(adrFilm &q, adrArtis p){
     adrArtis x =  q ->cast;
     if(x== nullptr){
 
@@ -68,4 +68,5 @@ void viewChild(adrFilm p){
         p = p ->next;
     }
 }
+
 
