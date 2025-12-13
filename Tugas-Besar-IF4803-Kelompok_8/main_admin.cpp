@@ -7,7 +7,7 @@ void menuAdmin(){
     int x = -99;
     while (x != 0){
         cout << "======================\n";
-        cout << "      Menu Admin";
+        cout << "      Menu Admin\n";
         cout << "----------------------\n";
         cout << "1. Insert First Film\n";
         cout << "2. Insert Last Film\n";
@@ -78,3 +78,4 @@ void menuAdmin(){
             }
         }
 }
+
