@@ -1,9 +1,12 @@
 #include <iostream>
 #include "artis.h"
 #include "film.h"
-extern listFilm L;
+#include "string"
+listFilm L;
 using namespace std;
+
 void menuAdmin(){
+    createLisrParent(L);
     int x = -99;
     while (x != 0){
         cout << "======================\n";
@@ -29,6 +32,7 @@ void menuAdmin(){
         cout << "0. Kembali\n";
         cout << "======================\n";
         cout << "Pilih :";
+        cin >> x;
         if (x == 1){
             string nama;
             int tahun;
@@ -39,7 +43,7 @@ void menuAdmin(){
             cin >> tahun;
             cout << "Rating Film : ";
             cin >> rating;
-            elmFilm p = createElementParent(nama, tahun, rating);
+            adrFilm p = createElementParent(nama, tahun, rating);
             insertFirstParent(L, p);
             cout << "Film berhasil ditambahkan" << endl;
         } else if (x == 2){
@@ -52,14 +56,14 @@ void menuAdmin(){
             cin >> tahun;
             cout << "Rating Film : ";
             cin >> rating;
-            elmFilm p = createElementParent(L, nama, tahun, rating);
+            adrFilm p = createElementParent(nama, tahun, rating);
             insertLastParent(L, p);
             cout << "Film berhasil ditambahkan" << endl;
         } else if (x == 3){
             string x;
             cout << "Masukan film setelah : ";
             cin >> x;
-            elmFilm prec = findElemenParent(L, x);
+            adrFilm prec = findElemenParent(L, x);
             if (prec != nullptr){
                 string nama;
                 int tahun;
@@ -70,12 +74,10 @@ void menuAdmin(){
                 cin >> tahun;
                 cout << "Rating Film : ";
                 cin >> rating;
-                elmFilm p = createElementParent(L, nama, tahun, rating);
-                cout << "Rating Film : ";
-                cin >> rating;
+                adrFilm p = createElementParent(nama, tahun, rating);
                 insertAfterParent(L, p, prec);
                 cout << "Film berhasil ditambahkan" << endl;
             }
         }
+    }
 }
-
