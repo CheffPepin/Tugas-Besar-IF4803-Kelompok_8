@@ -2,11 +2,14 @@
 #include "artis.h"
 #include "film.h"
 
+void menuAdmin();
+void menuUser();
+
 using namespace std;
 
 int main()
 {
-    int x;
+    int x = 99;
     while (x != 0){
         cout << "===\n";
         cout << "Menu";
@@ -16,12 +19,13 @@ int main()
         cout << "0. Kembali\n";
         cout << "===\n";
         cout << "Pilih :";
+        cin >> x;
         if (x == 1){
             menuAdmin();
-            system(clear);
+            system("cls");
         } else if (x == 2){
             menuUser();
-            system(clear);
+            system("cls");
         } else if (x < 0 && x > 2){
             cout << "===\n";
             cout << "Inputan tidak sesuai yang diberikan\n";
