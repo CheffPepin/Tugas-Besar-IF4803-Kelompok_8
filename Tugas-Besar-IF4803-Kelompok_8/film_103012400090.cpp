@@ -1,49 +1,49 @@
 #include "film.h"
 #include <iostream>
 #include "string"
-#include "artis.h"
 
 using namespace std;
 void deleteFirstParent(listFilm &L, adrFilm p){
-    if (L.first != nullptr){
-        p = L.first;
-        adrArtis q;
-        while (p->cast != nullptr){
-            deleteFirstChild(p, q);
-        }
-        L.first = L.first->next;
-        p->next = nullptr;
-    } else {
+    if(L.first == L.last && L.first == nullptr){
+        p = nullptr;
         cout << "List Kosong" << endl;
+    } else {
+        p = L.first;
+        if(L.first == L.last){
+            L.first = nullptr;
+            L.last = nullptr;
+        } else {
+            L.first = p ->next;
+            p ->next = nullptr;
+            L.first ->prev = nullptr;
+        }
     }
 }
 void deleteLastParent(listFilm &L, adrFilm p){
     if (L.last == nullptr){
+        p = nullptr;
         cout << "List Kosong" << endl;
     } else if (L.first == L.last){
-        deleteFirstParent(L, p);
+        p = L.last;
+        L.first = nullptr;
+        L.last = nullptr;
     } else {
         p = L.last;
-        adrArtis q;
-        while (p->cast != nullptr){
-            deleteFirstChild(p, q);
-        }
-        L.last = p->prev;
-        L.last->next = nullptr;
-        p->next = nullptr;
-        p->prev = nullptr;
+        L.last = p ->prev;
+        p ->prev = nullptr;
+        L.last ->next = nullptr;
     }
 }
+
 void deleteAfterParent(listFilm &L, adrFilm prec, adrFilm p){
-    if (prec != nullptr && prec->next != nullptr){
+    if (prec->next != nullptr){
         if (prec->next == L.last){
-            deleteLastParent(L, p);
+            p = L.last;
+            L.last ->prev = nullptr;
+            prec ->next = nullptr;
+            L.last = prec;
         } else {
             p = prec->next;
-            adrArtis q;
-            while (p->cast){
-                deleteFirstChild(p, q);
-            }
             prec->next = p->next;
             p->next->prev = prec;
             p->next = nullptr;
@@ -80,3 +80,21 @@ void viewParent(listFilm L){
     }
 }
 
+//mengahpus semua film dengan rating di bawah 5.5
+
+void hapusFilmJelek(listFilm &L, adrFilm p){
+    adrFilm q = L.first;
+
+    while(q != nullptr){
+        if(q ->info.rating < 5.5){
+            if(q == L.first){
+                deleteFirstParent(L,p);
+            } else if(q == L.last){
+                deleteLastParent(L,p);
+            } else {
+                deleteAfterParent(L,q ->prev,p);
+            }
+        }
+        q = q ->next;
+    }
+}
