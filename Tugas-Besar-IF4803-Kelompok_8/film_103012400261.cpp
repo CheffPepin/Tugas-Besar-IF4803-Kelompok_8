@@ -3,12 +3,12 @@
 #include "string"
 using namespace std;
 
-void createLisrParent(listFilm &L){
+void createListParent(listFilm &L){
     L.first = nullptr;
     L.last = nullptr;
 }
 
-adrFilm createElementParent(listFilm &L, string nama, int tahun, float rate){
+adrFilm createElementParent(string nama, int tahun, float rate){
     adrFilm p = new elmFilm;
     p ->info.nama = nama;
     p ->info.rating = rate;
@@ -55,3 +55,22 @@ void insertAfterParent(listFilm &L, adrFilm p, adrFilm prev){
     }
 }
 
+//memasukkan film sesuai urutan tahunnya first = kecil
+void UrutTahun(listFilm &L, adrFilm p){
+    if(L.first == nullptr && L.last == nullptr){
+        insertFirstParent(L,p);
+    }else {
+        adrFilm q = L.first;
+        while(q->info.tahun < p ->info.tahun){
+            q = q ->next;
+        }
+
+        if(q == L.first){
+            insertFirstParent(L,p);
+        } else if(q == L.last){
+            insertLastParent(L,p);
+        } else {
+            insertAfterParent(L,p,q->prev);
+        }
+    }
+}
