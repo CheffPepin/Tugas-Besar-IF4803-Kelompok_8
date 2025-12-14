@@ -11,29 +11,29 @@ void menuAdmin(){
     createListParent(L);
     int pil = -99;
     while (pil != 0){
-        cout << "======================\n";
-        cout << "      Menu Admin\n";
-        cout << "----------------------\n";
-        cout << "1. Insert First Film\n";
-        cout << "2. Insert Last Film\n";
-        cout << "3. Insert After Film\n";
-        cout << "4. Delete First Film\n";
-        cout << "5. Delete Last Film\n";
-        cout << "6. Delete After Film\n";
-        cout << "7. Find Nama Film\n";
-        cout << "8. View Film\n";
-        cout << "----------------------\n";
-        cout << "9. Insert First Aktor\n";
-        cout << "10. Insert Last Aktor\n";
-        cout << "11. Insert After Aktor\n";
-        cout << "12. Delete First Aktor\n";
-        cout << "13. Delete Last Aktor\n";
-        cout << "14. Delete After Aktor\n";
-        cout << "15. Find Nama Aktor\n";
-        cout << "16. View Aktor\n";
-        cout << "0. Kembali\n";
-        cout << "======================\n";
-        cout << "Pilih :";
+        cout << "===============================\n";
+        cout << "||        Menu Admin         ||\n";
+        cout << "-------------------------------\n";
+        cout << "||1. Insert First Film       ||\n";
+        cout << "||2. Insert Last Film        ||\n";
+        cout << "||3. Insert After Film       ||\n";
+        cout << "||4. Delete First Film       ||\n";
+        cout << "||5. Delete Last Film        ||\n";
+        cout << "||6. Delete After Film       ||\n";
+        cout << "||7. Find Nama Film          ||\n";
+        cout << "||8. View Film               ||\n";
+        cout << "-------------------------------\n";
+        cout << "||9. Insert First Aktor      ||\n";
+        cout << "||10. Insert Last Aktor      ||\n";
+        cout << "||11. Insert After Aktor     ||\n";
+        cout << "||12. Delete First Aktor     ||\n";
+        cout << "||13. Delete Last Aktor      ||\n";
+        cout << "||14. Delete After Aktor     ||\n";
+        cout << "||15. Find Nama Aktor        ||\n";
+        cout << "||16. View Aktor             ||\n";
+        cout << "||0. Kembali                 ||\n";
+        cout << "===============================\n";
+        cout << "Pilih : ";
         cin >> pil;
         if (pil == 1){
             string nama;
@@ -47,7 +47,7 @@ void menuAdmin(){
             cin >> rating;
             adrFilm p = createElementParent(nama, tahun, rating);
            insertFirstParent(L,p);
-            cout << "Film berhasil ditambahkan" << endl;
+            cout << "Film berhasil ditambahkan\n" << endl;
 
         } else if (pil == 2){
             string nama;
@@ -61,7 +61,7 @@ void menuAdmin(){
             cin >> rating;
             adrFilm p = createElementParent(nama, tahun, rating);
             insertLastParent(L, p);
-            cout << "Film berhasil ditambahkan" << endl;
+            cout << "Film berhasil ditambahkan\n" << endl;
 
         } else if (pil == 3){
             string x;
@@ -80,14 +80,16 @@ void menuAdmin(){
                 cin >> rating;
                 adrFilm p = createElementParent(nama, tahun, rating);
                 insertAfterParent(L, p, prec);
-                cout << "Film berhasil ditambahkan" << endl;
+                cout << "Film berhasil ditambahkan\n" << endl;
             }
 
         } else if (pil == 4){
             deleteFirstParent(L,p);
+            cout << "Film Telah dihapus\n" << endl;
 
         } else if (pil == 5){
             deleteLastParent(L,p);
+            cout << endl;
 
         } else if (pil == 6){
             string x;
@@ -97,7 +99,7 @@ void menuAdmin(){
             if (prec != nullptr){
                 deleteAfterParent(L, prec, p);
             } else {
-                cout << "Data tidak ada sehingga tidak bisa menghapus" << endl;
+                cout << "Data tidak ada sehingga tidak bisa menghapus\n" << endl;
             }
         } else if (pil == 7){
             string x;
@@ -110,7 +112,12 @@ void menuAdmin(){
                 cout << "Film tidak ditemukan\n";
 
         } else if (pil == 8){
-            viewParent(L);
+            if (L.first != nullptr){
+                viewParent(L);
+                cout << endl;
+            } else {
+                cout << "Film tidak ada" << endl;
+            }
 
         } else if(pil >= 9 && pil <= 11){
              string x, nama;
@@ -197,6 +204,10 @@ void menuAdmin(){
 
         } else if (pil == 16){
             viewChild(L);
+        } else if (pil == 0) {
+            system("cls");
+        } else {
+            cout << "Inputan Tidak Sesuai" << endl;
         }
     }
 }
