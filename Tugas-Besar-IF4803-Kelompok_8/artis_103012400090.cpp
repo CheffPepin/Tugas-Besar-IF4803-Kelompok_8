@@ -1,5 +1,6 @@
 #include <iostream>
-#include "artis.h"
+#include "film.h"
+#include "string"
 using namespace std;
 
 adrArtis createElementChild(string nama, int umur, float rating){
@@ -30,7 +31,8 @@ void insertLastChild(adrFilm &q, adrArtis p){
     }
 }
 void insertAfterChild(adrFilm &q, adrArtis prec, adrArtis p){
-    if (prec != nullptr)
+    if (prec != nullptr){
         p->next = prec->next;
         prec->next = p;
+    }
 }
