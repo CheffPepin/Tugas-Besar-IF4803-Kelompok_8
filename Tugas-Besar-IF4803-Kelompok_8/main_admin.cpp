@@ -3,12 +3,14 @@
 #include "film.h"
 #include "string"
 listFilm L;
+adrFilm p;
+adrArtis q;
 using namespace std;
 
 void menuAdmin(){
-    createLisrParent(L);
-    int x = -99;
-    while (x != 0){
+    createListParent(L);
+    int pil = -99;
+    while (pil != 0){
         cout << "======================\n";
         cout << "      Menu Admin\n";
         cout << "----------------------\n";
@@ -32,8 +34,8 @@ void menuAdmin(){
         cout << "0. Kembali\n";
         cout << "======================\n";
         cout << "Pilih :";
-        cin >> x;
-        if (x == 1){
+        cin >> pil;
+        if (pil == 1){
             string nama;
             int tahun;
             float rating;
@@ -44,9 +46,10 @@ void menuAdmin(){
             cout << "Rating Film : ";
             cin >> rating;
             adrFilm p = createElementParent(nama, tahun, rating);
-            insertFirstParent(L, p);
+           insertFirstParent(L,p);
             cout << "Film berhasil ditambahkan" << endl;
-        } else if (x == 2){
+
+        } else if (pil == 2){
             string nama;
             int tahun;
             float rating;
@@ -59,7 +62,8 @@ void menuAdmin(){
             adrFilm p = createElementParent(nama, tahun, rating);
             insertLastParent(L, p);
             cout << "Film berhasil ditambahkan" << endl;
-        } else if (x == 3){
+
+        } else if (pil == 3){
             string x;
             cout << "Masukan film setelah : ";
             cin >> x;
@@ -78,6 +82,121 @@ void menuAdmin(){
                 insertAfterParent(L, p, prec);
                 cout << "Film berhasil ditambahkan" << endl;
             }
+
+        } else if (pil == 4){
+            deleteFirstParent(L,p);
+
+        } else if (pil == 5){
+            deleteLastParent(L,p);
+
+        } else if (pil == 6){
+            string x;
+            cout << "Hapus setelah film : ";
+            cin >> x;
+            adrFilm prec = findElemenParent(L, x);
+            if (prec != nullptr){
+                deleteAfterParent(L, prec, p);
+            } else {
+                cout << "Data tidak ada sehingga tidak bisa menghapus" << endl;
+            }
+        } else if (pil == 7){
+            string x;
+            cout << "Cari nama film : ";
+            cin >> x;
+            adrFilm p = findElemenParent(L, x);
+            if (p != nullptr)
+                cout << "Film ditemukan\n";
+            else
+                cout << "Film tidak ditemukan\n";
+
+        } else if (pil == 8){
+            viewParent(L);
+
+        } else if(pil >= 9 && pil <= 11){
+             string x, nama;
+                int umur;
+                float rating;
+
+                cout << "Judul film aktor : ";
+                cin >> x;
+                adrFilm Film = findElemenParent(L,x);
+
+                cout << "Nama Aktor : ";
+                cin >> nama;
+                cout << "Umur : ";
+                cin >> umur;
+                cout << "Rating : ";
+                cin >> rating;
+
+                adrArtis q = createElementChild(nama, umur, rating);
+                if(pil == 9){
+                    insertFirstChild(Film, q);
+                } else if(pil == 10){
+                    insertLastChild(Film,q);
+                } else {
+                    cout << "Masukan aktor setelah : ";
+                    cin >> x;
+                    adrArtis prec = findElemenChild(Film, x);
+                    if (prec != nullptr){
+                        insertAfterChild(Film, prec, q);
+                    } else {
+                        cout << "Aktor tidak ditemukan\n";
+                    }
+                }
+
+        } else if(pil == 12){
+            string x;
+            cout << "Judul film : ";
+            cin >> x;
+            adrFilm p = findElemenParent(L,x);
+            deleteFirstChild(p,q);
+
+        } else if(pil == 13){
+            string x;
+            cout << "Judul film : ";
+            cin >> x;
+            adrFilm p = findElemenParent(L,x);
+            deleteLastChild(p,q);
+
+        } else if(pil == 14){
+            string x,y;
+            cout << "Judul film : ";
+            cin >> x;
+            cout << "Hapus setelah aktor : ";
+            cin >> y;
+             adrFilm p = findElemenParent(L,x);
+             if(p != nullptr){
+                adrArtis prec = findElemenChild(p,y);
+                if (prec != nullptr) {
+                    deleteAfterChild(p,q,prec);
+                } else {
+                    cout << "nama aktor tidak ada di dalam list"<<endl;
+                }
+             } else {
+                cout << "judul film tidak ada di dalam list"<<endl;
+             }
+
+
+        }  else if (pil == 15){
+            string x,y;
+            cout << "Cari aktor : ";
+            cin >> y;
+            cout << "dalam film : ";
+            cin >> x;
+            adrFilm p = findElemenParent(L,x);
+            if (p == nullptr){
+                cout << "Film tidak ditemukan\n";
+            } else {
+                adrArtis a = findElemenChild(p, y);
+                if (a != nullptr){
+                    cout << "Aktor ditemukan\n";
+                }else{
+                    cout << "Aktor tidak ditemukan\n";
+                }
+            }
+
+        } else if (pil == 16){
+            viewChild(L);
         }
     }
 }
