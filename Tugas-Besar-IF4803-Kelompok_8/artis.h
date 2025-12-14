@@ -2,11 +2,11 @@
 #define ARTIS_H_INCLUDED
 #include <iostream>
 #include "string"
-#include "film.h"
 using namespace std;
 
 typedef struct elmArtis *adrArtis;
 typedef struct elmFilm *adrFilm;
+struct listFilm;
 
 struct artis{
     string nama;
@@ -28,10 +28,10 @@ void deleteFirstChild(adrFilm &q, adrArtis p);
 void deleteLastChild(adrFilm &q, adrArtis p);
 void deleteAfterChild(adrFilm &q, adrArtis p, adrArtis prec);
 adrArtis findElemenChild(adrFilm p, string nama);
-void viewChild(adrFilm p);
+void viewChild(listFilm L);
+void listAktor(listFilm L, string Aktor[], int &x);
 
 #endif // ARTIS_H_INCLUDED
-
 
 
 
