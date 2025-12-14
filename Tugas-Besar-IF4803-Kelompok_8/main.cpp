@@ -11,28 +11,31 @@ int main()
 {
     int x = 99;
     while (x != 0){
-        cout << "===\n";
-        cout << "Menu";
-        cout << "===\n";
-        cout << "1. Admin\n";
-        cout << "2. User\n";
-        cout << "0. Kembali\n";
-        cout << "===\n";
-        cout << "Pilih :";
+        cout << "=====================\n";
+        cout << "||       Menu      ||\n";
+        cout << "---------------------\n";
+        cout << "||1. Admin         ||\n";
+        cout << "||2. User          ||\n";
+        cout << "||0. Kembali       ||\n";
+        cout << "====================\n";
+        cout << "Pilih : ";
         cin >> x;
         if (x == 1){
+            system("cls");
             menuAdmin();
-            system("cls");
         } else if (x == 2){
-            menuUser();
             system("cls");
-        } else if (x < 0 && x > 2){
-            cout << "===\n";
-            cout << "Inputan tidak sesuai yang diberikan\n";
-            cout << "===\n";
-        } else {
-            cout << "===\n";
+            menuUser();
+        } else if (x == 0){
+           system("cls");
+            cout << "=========================================\n";
             cout << "Terimakasih telah menggunakan program ini\n";
+            cout << "=========================================\n";
+        } else {
+            system("cls");
+            cout << "===================================\n";
+            cout << "Inputan tidak sesuai yang diberikan\n";
+            cout << "===================================\n";
         }
     }
     return 0;
