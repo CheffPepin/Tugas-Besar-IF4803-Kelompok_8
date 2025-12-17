@@ -5,11 +5,18 @@
 void menuAdmin();
 void menuUser();
 
+listFilm L;
+adrFilm p;
+adrArtis q;
+string nama;
+int tahun,umur;
+float rating;
+
+
 using namespace std;
 
 int main()
-{
-    int x = 99;
+{int x = 99;
     while (x != 0){
         cout << "=====================\n";
         cout << "||       Menu      ||\n";
@@ -21,11 +28,11 @@ int main()
         cout << "Pilih : ";
         cin >> x;
         if (x == 1){
-            system("cls");
             menuAdmin();
-        } else if (x == 2){
             system("cls");
+        } else if (x == 2){
             menuUser();
+            system("cls");
         } else if (x == 0){
            system("cls");
             cout << "=========================================\n";
