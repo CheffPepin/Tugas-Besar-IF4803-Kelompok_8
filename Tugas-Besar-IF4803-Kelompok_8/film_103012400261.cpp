@@ -55,6 +55,8 @@ void insertAfterParent(listFilm &L, adrFilm p, adrFilm prev){
     }
 }
 
+// ------UNTUK STUDI KASUS-------
+
 //memasukkan film sesuai urutan tahunnya first = kecil
 void UrutTahun(listFilm &L, adrFilm p){
     if(L.first == nullptr && L.last == nullptr){
@@ -67,7 +69,7 @@ void UrutTahun(listFilm &L, adrFilm p){
 
         if(q == L.first){
             insertFirstParent(L,p);
-        } else if(q == L.last){
+        } else if(q == L.last && q ->info.tahun < p ->info.tahun ){
             insertLastParent(L,p);
         } else {
             insertAfterParent(L,p,q->prev);
