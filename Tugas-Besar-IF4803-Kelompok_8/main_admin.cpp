@@ -2,9 +2,7 @@
 #include "artis.h"
 #include "film.h"
 #include "string"
-listFilm L;
-adrFilm p;
-adrArtis q;
+#include "global.h"
 using namespace std;
 
 void menuAdmin(){
@@ -36,9 +34,6 @@ void menuAdmin(){
         cout << "Pilih : ";
         cin >> pil;
         if (pil == 1){
-            string nama;
-            int tahun;
-            float rating;
             cout << "Nama Film : ";
             cin >> nama;
             cout << "Tahun Film : ";
@@ -50,9 +45,6 @@ void menuAdmin(){
             cout << "Film berhasil ditambahkan\n" << endl;
 
         } else if (pil == 2){
-            string nama;
-            int tahun;
-            float rating;
             cout << "Nama Film : ";
             cin >> nama;
             cout << "Tahun Film : ";
@@ -69,9 +61,7 @@ void menuAdmin(){
             cin >> x;
             adrFilm prec = findElemenParent(L, x);
             if (prec != nullptr){
-                string nama;
-                int tahun;
-                float rating;
+
                 cout << "Nama Film : ";
                 cin >> nama;
                 cout << "Tahun Film : ";
@@ -204,8 +194,10 @@ void menuAdmin(){
 
         } else if (pil == 16){
             viewChild(L);
-        } else if (pil == 0) {
+
+        }else if (pil == 0) {
             system("cls");
+
         } else {
             cout << "Inputan Tidak Sesuai" << endl;
         }
