@@ -56,6 +56,7 @@ adrArtis findElemenChild(adrFilm p, string nama){
 void viewChild(listFilm L){
    string Aktor[20];
    int x,i;
+   float rate;
 
    listAktor(L, Aktor,x);
 
@@ -68,11 +69,13 @@ void viewChild(listFilm L){
             while(q != nullptr){
                 if(q ->info.nama == Aktor[i]){
                     cout << p ->info.nama << ", ";
+                    rate = q ->info.rating;
                 }
                 q = q ->next;
             }
             p = p ->next;
         }
+        cout << "Rating aktor : " << rate << endl;
         cout << endl;
    }
 
@@ -102,3 +105,70 @@ void listAktor(listFilm L, string Aktor[], int &x){
         p = p->next;
     }
 }
+
+
+// ------UNTUK STUDI KASUS-------
+//komputasi 1
+float hitungRatingArtis(listFilm L, string nama){
+    adrFilm p = L.first;
+    float rateF = 0;
+    int i = 0;
+
+    while(p != nullptr){
+        adrArtis q = p->cast;
+        while(q != nullptr){
+            if(q->info.nama == nama){
+                rateF += p->info.rating;
+                i++;
+            }
+            q = q->next;
+        }
+        p = p->next;
+    }
+
+    if(i != 0){
+        rateF = rateF / (float)i;
+    }
+
+    return rateF;
+}
+
+//komputasi 2
+int jumlahFilm(listFilm L){
+    adrFilm p = L.first;
+    int i = 0;
+
+    while(p != nullptr){
+        i++;
+        p = p->next;
+    }
+    return i;
+}
+
+
+//menghapus elemen jika rating di bawah 5.0
+
+void hapusArtisRatingBuruk(adrFilm p){
+    if(p != nullptr){
+        adrArtis q = p ->cast;
+        adrArtis x;
+
+        while(q != nullptr){
+            if(q ->info.rating < 5.0){
+                if(q == p ->cast){
+                    deleteFirstChild(p,x);
+                } else if(q ->next == nullptr){
+                    deleteLastChild(p,x);
+                } else{
+                    adrArtis prec = p ->cast;
+                    while(prec ->next != q){
+                        prec = prec ->next;
+                    }
+                    deleteAfterChild(p,x,prec);
+                }
+            }
+            q = q->next;
+        }
+    }
+}
+
