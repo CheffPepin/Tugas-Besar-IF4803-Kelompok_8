@@ -35,5 +35,6 @@ void deleteAfterParent(listFilm &L, adrFilm prec, adrFilm p);
 adrFilm findElemenParent(listFilm L, string name);
 void viewParent(listFilm L);
 void hapusFilmJelek(listFilm &L, adrFilm p);
+int jumlahFilm(listFilm L);
 
 #endif // FILM_H_INCLUDED
