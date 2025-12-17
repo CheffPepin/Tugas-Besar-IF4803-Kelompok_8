@@ -36,3 +36,25 @@ void insertAfterChild(adrFilm &q, adrArtis prec, adrArtis p){
         prec->next = p;
     }
 }
+
+//memasukkan data child jika umurnya di atas 16
+void ProteksiAnak(listFilm L,adrFilm p,string nama,int umur,float rate){
+    if( umur > 16){
+        adrArtis q = createElementChild(nama,umur,rate);
+        float ret = hitungRatingArtis(L,nama);
+        if(ret == 0.0){
+            q ->info.rating = p ->info.rating;
+        } else {
+            q ->info.rating = ret;
+        }
+
+        if(p ->cast == nullptr){
+            insertFirstChild(p,q);
+        }else{
+            insertLastChild(p,q);
+        }
+
+    } else {
+        cout << "Anak belum cukup umur untuk di publish" << endl;
+    }
+}
