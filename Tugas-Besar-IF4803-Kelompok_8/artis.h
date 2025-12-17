@@ -30,6 +30,9 @@ void deleteAfterChild(adrFilm &q, adrArtis p, adrArtis prec);
 adrArtis findElemenChild(adrFilm p, string nama);
 void viewChild(listFilm L);
 void listAktor(listFilm L, string Aktor[], int &x);
+void ProteksiAnak(listFilm L,adrFilm p,string nama,int umur,float rate);
+float hitungRatingArtis(listFilm L, string nama);
+void hapusArtisRatingBuruk(adrFilm p);
 
 #endif // ARTIS_H_INCLUDED
 
