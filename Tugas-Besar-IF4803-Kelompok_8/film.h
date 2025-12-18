@@ -36,5 +36,6 @@ adrFilm findElemenParent(listFilm L, string name);
 void viewParent(listFilm L);
 void hapusFilmJelek(listFilm &L, adrFilm p);
 int jumlahFilm(listFilm L);
+bool filmDuplikasi(listFilm L, string nama);
 
 #endif // FILM_H_INCLUDED
