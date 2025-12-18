@@ -17,6 +17,7 @@ void deleteFirstParent(listFilm &L, adrFilm p){
             p ->next = nullptr;
             L.first ->prev = nullptr;
         }
+        cout << "Film telah dihapus" << endl;
     }
 }
 void deleteLastParent(listFilm &L, adrFilm p){
@@ -27,11 +28,13 @@ void deleteLastParent(listFilm &L, adrFilm p){
         p = L.last;
         L.first = nullptr;
         L.last = nullptr;
+        cout << "Film telah dihapus" << endl;
     } else {
         p = L.last;
         L.last = p ->prev;
         p ->prev = nullptr;
         L.last ->next = nullptr;
+        cout << "Film telah dihapus" << endl;
     }
 }
 
@@ -76,6 +79,7 @@ void viewParent(listFilm L){
         cout << "Nama film : " << p->info.nama << endl;
         cout << "Tahun film : " << p->info.tahun << endl;
         cout << "Rating film : " << p->info.rating << endl;
+        cout << "-----------------------------------------" << endl;
         p = p->next;
     }
 }
@@ -98,3 +102,4 @@ void hapusFilmJelek(listFilm &L, adrFilm p){
         q = q ->next;
     }
 }
+
