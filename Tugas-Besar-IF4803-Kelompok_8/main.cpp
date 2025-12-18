@@ -15,8 +15,8 @@ float rating;
 
 using namespace std;
 
-int main()
-{int x = 99;
+int main(){
+    int x = 99;
     while (x != 0){
         cout << "=====================\n";
         cout << "||       Menu      ||\n";
@@ -28,11 +28,11 @@ int main()
         cout << "Pilih : ";
         cin >> x;
         if (x == 1){
+            system("cls");
             menuAdmin();
-            system("cls");
         } else if (x == 2){
-            menuUser();
             system("cls");
+            menuUser();
         } else if (x == 0){
            system("cls");
             cout << "=========================================\n";
@@ -47,3 +47,4 @@ int main()
     }
     return 0;
 }
+
