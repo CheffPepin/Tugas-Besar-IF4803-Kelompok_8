@@ -103,3 +103,13 @@ void hapusFilmJelek(listFilm &L, adrFilm p){
     }
 }
 
+bool filmDuplikasi(listFilm L, string nama){
+    elmFilm *p = L.first;
+    while (p != nullptr){
+        if (p->info.nama == nama){
+            return true;
+        }
+        p = p->next;
+    }
+    return false;
+}
