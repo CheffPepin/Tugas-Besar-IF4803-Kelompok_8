@@ -31,17 +31,20 @@ void menuUser(){
         if(pil == 1){
             cout << "Nama Film : ";
             cin >> nama;
-            cout << "Tahun Film : ";
-            cin >> tahun;
-            cout << "Rating Film : ";
-            cin >> rating;
-            p = createElementParent(nama, tahun, rating);
-            UrutTahun(L,p);
-            cout << "Film berhasil ditambahkan" << endl;
-
+            if (filmDuplikasi(L, nama)){
+                cout << "Nama Film sudah ada" << endl;
+            } else {
+                cout << "Tahun Film : ";
+                cin >> tahun;
+                cout << "Rating Film : ";
+                cin >> rating;
+                p = createElementParent(nama, tahun, rating);
+                UrutTahun(L,p);
+                cout << "Film berhasil ditambahkan" << endl;
+            }
         } else if(pil == 2){
             hapusFilmJelek(L,p);
-
+            cout << "Film telah dihapus" << endl;
         } else if(pil == 3){
             string x;
             cout << "Judul film : ";
