@@ -36,6 +36,9 @@ void menuAdmin(){
         if (pil == 1){
             cout << "Nama Film : ";
             cin >> nama;
+            if (filmDuplikasi(L, nama)){
+                cout << "Nama Film sudah ada" << endl;
+            } else {
             cout << "Tahun Film : ";
             cin >> tahun;
             cout << "Rating Film : ";
@@ -43,18 +46,21 @@ void menuAdmin(){
             adrFilm p = createElementParent(nama, tahun, rating);
             insertFirstParent(L,p);
             cout << "Film berhasil ditambahkan\n" << endl;
-
+            }
         } else if (pil == 2){
             cout << "Nama Film : ";
             cin >> nama;
-            cout << "Tahun Film : ";
-            cin >> tahun;
-            cout << "Rating Film : ";
-            cin >> rating;
-            adrFilm p = createElementParent(nama, tahun, rating);
-            insertLastParent(L, p);
-            cout << "Film berhasil ditambahkan\n" << endl;
-
+            if (filmDuplikasi(L, nama)){
+                cout << "Nama Film sudah ada" << endl;
+            } else {
+                cout << "Tahun Film : ";
+                cin >> tahun;
+                cout << "Rating Film : ";
+                cin >> rating;
+                adrFilm p = createElementParent(nama, tahun, rating);
+                insertLastParent(L, p);
+                cout << "Film berhasil ditambahkan\n" << endl;
+            }
         } else if (pil == 3){
             if (L.first != nullptr){
                 string x;
@@ -65,13 +71,17 @@ void menuAdmin(){
 
                     cout << "Nama Film : ";
                     cin >> nama;
-                    cout << "Tahun Film : ";
-                    cin >> tahun;
-                    cout << "Rating Film : ";
-                    cin >> rating;
-                    adrFilm p = createElementParent(nama, tahun, rating);
-                    insertAfterParent(L, p, prec);
-                    cout << "Film berhasil ditambahkan\n" << endl;
+                    if (filmDuplikasi(L, nama)){
+                        cout << "Nama Film sudah ada" << endl;
+                    } else {
+                        cout << "Tahun Film : ";
+                        cin >> tahun;
+                        cout << "Rating Film : ";
+                        cin >> rating;
+                        adrFilm p = createElementParent(nama, tahun, rating);
+                        insertAfterParent(L, p, prec);
+                        cout << "Film berhasil ditambahkan\n" << endl;
+                    }
                 }
             } else {
                 insertFirstParent(L, p);
